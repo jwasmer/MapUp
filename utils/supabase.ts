@@ -50,12 +50,13 @@ export interface Database {
     }
   }
   profiles: {
-    id: any
-    updated_at: any
-    username: string
-    full_name: string
-    avatar_url: string
-    website: string
+    email: string | undefined
+    first_name: string | null
+    last_name: string | null
+    street_address: string | null
+    city: string | null
+    home_state: string | null
+    zipcode: string | null
   }
   storage: {
     Tables: {
