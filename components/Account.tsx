@@ -1,15 +1,19 @@
 import { useState, useEffect } from 'react'
 import { useUser, useSupabaseClient, Session } from '@supabase/auth-helpers-react'
 import { Database } from '../utils/supabase'
-type Profiles = Database['public']['Tables']['profiles']['Row']
+type Profiles = Database['profiles']
 
 export default function Account({ session }: { session: Session }) {
   const supabase = useSupabaseClient<Database>()
   const user = useUser()
   const [loading, setLoading] = useState(true)
-  const [username, setUsername] = useState<Profiles['username']>(null)
-  const [website, setWebsite] = useState<Profiles['website']>(null)
-  const [avatar_url, setAvatarUrl] = useState<Profiles['avatar_url']>(null)
+  const [email, setEmail] = useState<Profiles['email']>(null)
+  const [first_name, setFirstName] = useState<Profiles['first_name']>(null)
+  const [last_name, setLastName] = useState<Profiles['last_name']>(null)
+  const [street_address, setStreetAddress] = useState<Profiles['street_address']>(null)
+  const [city, setCity] = useState<Profiles['city']>(null)
+  const [home_state, setHomeState] = useState<Profiles['home_state']>(null)
+  const [zipcode, setZipcode] = useState<Profiles['zipcode']>(null)
 
   useEffect(() => {
     getProfile()
@@ -22,18 +26,22 @@ export default function Account({ session }: { session: Session }) {
 
       let { data, error, status } = await supabase
         .from('profiles')
-        .select(`username, website, avatar_url`)
+        .select(`email, first_name, last_name, street_address, city, home_state, zipcode`)
         .eq('id', user.id)
-        .single()
+        .maybeSingle()
 
       if (error && status !== 406) {
         throw error
       }
 
       if (data) {
-        setUsername(data.username)
-        setWebsite(data.website)
-        setAvatarUrl(data.avatar_url)
+        setEmail(session.user.email)
+        setFirstName(data.first_name)
+        setLastName(data.last_name)
+        setStreetAddress(data.street_address)
+        setCity(data.city)
+        setHomeState(data.home_state)
+        setZipcode(data.zipcode)
       }
     } catch (error) {
       alert('Error loading user data!')
@@ -44,13 +52,21 @@ export default function Account({ session }: { session: Session }) {
   }
 
   async function updateProfile({
-    username,
-    website,
-    avatar_url,
+    email,
+    first_name,
+    last_name,
+    street_address,
+    city,
+    home_state,
+    zipcode,
   }: {
-    username: Profiles['username']
-    website: Profiles['website']
-    avatar_url: Profiles['avatar_url']
+    email: Profiles['email']
+    first_name: Profiles['first_name']
+    last_name: Profiles['last_name']
+    street_address: Profiles['street_address']
+    city: Profiles['city']
+    home_state: Profiles['home_state']
+    zipcode: Profiles['zipcode']
   }) {
     try {
       setLoading(true)
@@ -58,9 +74,13 @@ export default function Account({ session }: { session: Session }) {
 
       const updates = {
         id: user.id,
-        username,
-        website,
-        avatar_url,
+        email,
+        first_name,
+        last_name,
+        street_address,
+        city,
+        home_state,
+        zipcode,
         updated_at: new Date().toISOString(),
       }
 
@@ -82,28 +102,72 @@ export default function Account({ session }: { session: Session }) {
         <input id="email" type="text" value={session.user.email} disabled />
       </div>
       <div>
-        <label htmlFor="username">Username</label>
         <input
-          id="username"
+          id="first-name"
           type="text"
-          value={username || ''}
-          onChange={(e) => setUsername(e.target.value)}
+          placeholder="First name"
+          value={first_name || ''}
+          onChange={(e) => setFirstName(e.target.value)}
         />
       </div>
       <div>
-        <label htmlFor="website">Website</label>
         <input
-          id="website"
-          type="website"
-          value={website || ''}
-          onChange={(e) => setWebsite(e.target.value)}
+          id="last-name"
+          type="text"
+          placeholder="Last name"
+          value={last_name || ''}
+          onChange={(e) => setLastName(e.target.value)}
+        />
+      </div>
+      <div>
+        <input
+          id="street-address"
+          type="text"
+          placeholder="Address"
+          value={street_address || ''}
+          onChange={(e) => setStreetAddress(e.target.value)}
+        />
+      </div>
+      <div>
+        <input
+          id="city"
+          type="text"
+          placeholder="City"
+          value={city || ''}
+          onChange={(e) => setCity(e.target.value)}
+        />
+      </div>
+      <div>
+        <input
+          id="state"
+          type="text"
+          placeholder="State"
+          value={home_state || ''}
+          onChange={(e) => setHomeState(e.target.value)}
+        />
+      </div>
+      <div>
+        <input
+          id="zipcode"
+          type="text"
+          placeholder="Zipcode"
+          value={zipcode || ''}
+          onChange={(e) => setZipcode(e.target.value)}
         />
       </div>
 
       <div>
         <button
           className="button primary block"
-          onClick={() => updateProfile({ username, website, avatar_url })}
+          onClick={() => updateProfile({
+            email,
+            first_name,
+            last_name,
+            street_address,
+            city,
+            home_state,
+            zipcode,
+          })}
           disabled={loading}
         >
           {loading ? 'Loading ...' : 'Update'}
