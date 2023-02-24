@@ -1,19 +1,21 @@
 import { Auth, ThemeSupa } from '@supabase/auth-ui-react'
 import { useSession, useSupabaseClient } from '@supabase/auth-helpers-react'
 import Account from '../components/Account'
+import AuthModal from '../components/AuthModal'
+import style from "../styles/Home.module.css"
 
 const Home = () => {
   const session = useSession()
   const supabase = useSupabaseClient()
 
   return (
-    <div className="container" style={{ padding: '50px 0 100px 0' }}>
+    <main className={style.main}>
       {!session ? (
-        <Auth supabaseClient={supabase} appearance={{ theme: ThemeSupa }} theme="dark" />
+        <AuthModal supabase={supabase}/>
       ) : (
         <Account session={session} />
       )}
-    </div>
+    </main>
   )
 }
 
