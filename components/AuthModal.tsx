@@ -1,14 +1,17 @@
-import { useState, useEffect } from 'react'
-import { useUser, Session } from '@supabase/auth-helpers-react'
-import { useSession } from '@supabase/auth-helpers-react'
+import { SupabaseClient } from '@supabase/auth-helpers-react'
 import { Auth, ThemeSupa } from '@supabase/auth-ui-react'
-import { Database } from '../utils/supabase'
+import styles from "../styles/AuthModal.module.css"
 
-export default function Account({ session }: { session: Session }) {
+export default function Account({ supabase }: { supabase: SupabaseClient }) {
   
   return (
-    <div>
-      <Auth supabaseClient={supabase} appearance={{ theme: ThemeSupa }} theme="dark" />
+    <div className={styles.modalWrapper}>
+      <Auth 
+        supabaseClient={supabase} 
+        appearance={{ theme: ThemeSupa }} 
+        theme="dark"
+        providers={['google', 'github', 'linkedin']} 
+      />
     </div>
   )
 }
