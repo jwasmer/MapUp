@@ -1,7 +1,8 @@
 import mapboxgl from 'mapbox-gl';
 import React, { useState, useEffect, useRef } from "react";
+import styles from '../styles/BackdropMap.module.css'
 
-mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN ?? ''
+mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN ?? ''
 
 export default function BackdropMap() {
   const mapContainer = useRef(null)
@@ -14,7 +15,7 @@ export default function BackdropMap() {
     if (map.current) return;
 
     map.current = new mapboxgl.Map({
-      container: mapContainer.current, // throws error due to mapContainer's default null value
+      container: mapContainer.current || "",
       style: "mapbox://styles/mapbox/streets-v12",
       center: [lng, lat],
       zoom: zoom
@@ -32,6 +33,6 @@ export default function BackdropMap() {
   });
 
   return (
-    <div id="1"></div>
+    <div ref={mapContainer} className={styles.mapContainer}></div>
   )
 }
