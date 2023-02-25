@@ -14,7 +14,7 @@ export default function BackdropMap() {
     if (map.current) return;
 
     map.current = new mapboxgl.Map({
-      container: mapContainer.current,
+      container: mapContainer.current, // throws error due to mapContainer's default null value
       style: "mapbox://styles/mapbox/streets-v12",
       center: [lng, lat],
       zoom: zoom
@@ -32,6 +32,6 @@ export default function BackdropMap() {
   });
 
   return (
-    <div></div>
+    <div id="1"></div>
   )
 }
