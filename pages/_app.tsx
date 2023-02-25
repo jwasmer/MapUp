@@ -3,19 +3,20 @@ import { useState } from 'react'
 import { createBrowserSupabaseClient } from '@supabase/auth-helpers-nextjs'
 import { SessionContextProvider, Session } from '@supabase/auth-helpers-react'
 import { AppProps } from 'next/app'
+import { mapState, MapStateContext } from "../helpers/mapStateContext"
 
-function MyApp({
+export default function MyApp({
   Component,
   pageProps,
-}: AppProps<{
-  initialSession: Session,
-}>) {
+}: AppProps<{ initialSession: Session }>) {
+
   const [supabase] = useState(() => createBrowserSupabaseClient())
 
   return (
     <SessionContextProvider supabaseClient={supabase} initialSession={pageProps.initialSession}>
-      <Component {...pageProps} />
+      <MapStateContext.Provider value={mapState}>
+        <Component {...pageProps} />
+      </MapStateContext.Provider>
     </SessionContextProvider>
   )
 }
-export default MyApp
