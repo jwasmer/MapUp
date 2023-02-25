@@ -4,7 +4,7 @@ import { createBrowserSupabaseClient } from '@supabase/auth-helpers-nextjs'
 import { SessionContextProvider, Session } from '@supabase/auth-helpers-react'
 import { AppProps } from 'next/app'
 import { mapState, MapStateContext } from "../helpers/mapStateContext"
-import BackdropMap from '@/components/BackdropMap'
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 export default function MyApp({
   Component,
@@ -16,7 +16,6 @@ export default function MyApp({
   return (
     <SessionContextProvider supabaseClient={supabase} initialSession={pageProps.initialSession}>
       <MapStateContext.Provider value={mapState}>
-        <BackdropMap />
         <Component {...pageProps} />
       </MapStateContext.Provider>
     </SessionContextProvider>
