@@ -14,8 +14,7 @@ export default function BackdropMap() {
     if (map.current) return;
 
     map.current = new mapboxgl.Map({
-      container: mapContainer.current === undefined || mapContainer.current === null ? 
-      "" : mapContainer.current,
+      container: mapContainer.current,
       style: "mapbox://styles/mapbox/streets-v12",
       center: [lng, lat],
       zoom: zoom
@@ -25,10 +24,14 @@ export default function BackdropMap() {
   useEffect(() => {
     if (!map.current) return;
 
-    map.current.on("move", () => {
-      setLng(Number(map.current?.getCenter().lng.toFixed(4)))
-      setLat(Number(map.current?.getCenter().lat.toFixed(4)))
-      setZoom(Number(map.current?.getZoom().toFixed(2)))
-    })
-  })
+    map.current.on('move', () => {
+      setLng(Number(map.current?.getCenter().lng.toFixed(4)));
+      setLat(Number(map.current?.getCenter().lat.toFixed(4)));
+      setZoom(Number(map.current?.getZoom().toFixed(2)));
+    });
+  });
+
+  return (
+    <div></div>
+  )
 }
