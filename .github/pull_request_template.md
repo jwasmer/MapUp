@@ -1,9 +1,9 @@
 #### Summary:
 
-##### Features implemented:
+#### Features implemented:
 
-##### Code refactored:
+#### Code refactored:
 
-##### Issues:
+#### Issues:
 
-##### Notes/comments:
+#### Notes/comments:
