@@ -3,7 +3,7 @@ import { useSession, useSupabaseClient } from '@supabase/auth-helpers-react'
 import Account from '../components/Account'
 import AuthModal from '../components/AuthModal'
 import style from "../styles/Home.module.css"
-import 'mapbox-gl/dist/mapbox-gl.css';
+import BackdropMap from '@/components/BackdropMap'
 
 const Home = () => {
   const session = useSession()
@@ -11,6 +11,7 @@ const Home = () => {
 
   return (
     <main className={style.main}>
+      <BackdropMap />
       {!session ? (
         <AuthModal supabase={supabase}/>
       ) : (
