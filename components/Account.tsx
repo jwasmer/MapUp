@@ -7,7 +7,7 @@ export default function Account({ session }: { session: Session }) {
   const supabase = useSupabaseClient<Database>()
   const user = useUser()
   const [loading, setLoading] = useState(true)
-  const [email, setEmail] = useState<Profiles['email']>(null)
+  const [email, setEmail] = useState<Profiles['email']>(undefined)
   const [first_name, setFirstName] = useState<Profiles['first_name']>(null)
   const [last_name, setLastName] = useState<Profiles['last_name']>(null)
   const [street_address, setStreetAddress] = useState<Profiles['street_address']>(null)
