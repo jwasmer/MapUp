@@ -3,11 +3,11 @@ import { useSession, useSupabaseClient } from '@supabase/auth-helpers-react'
 import Account from '../components/Account'
 import AuthModal from '../components/AuthModal'
 import style from "../styles/Home.module.css"
-import BackdropMap from '@/components/BackdropMap'
 import MapUI from '@/components/MapUI'
+import BackdropMap from '@/components/BackdropMap'
 
 export default function Home () {
-  const [accountToggle, setAccountToggle] = useState(false)
+  const [accountToggle, setAccountToggle] = useState<boolean>(false)
   const session = useSession()
   const supabase = useSupabaseClient()
 
@@ -16,7 +16,7 @@ export default function Home () {
       <BackdropMap />
       {!session && <AuthModal supabase={supabase} />}
       {session && !accountToggle && <MapUI />}
-      {accountToggle && session && <Account session={session} />}
+      {session && <Account session={session} />}
     </main>
   )
 }
