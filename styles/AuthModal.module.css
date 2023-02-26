@@ -1,10 +1,15 @@
 .modalWrapper {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 325px;
-  height: 525px;
+  height: 535px;
   background-color: black;
   padding: 24px;
   border-radius: 10px;
   background-color: rgba(0, 0, 0, .2);
   backdrop-filter: blur(15px);
-  border: 2px solid rgba(255, 255, 255, .5)
+  border: 2px solid rgba(255, 255, 255, .5);
+  z-index: 1;
 }

@@ -5,13 +5,24 @@ import styles from "../styles/AuthModal.module.css"
 export default function Account({ supabase }: { supabase: SupabaseClient }) {
   
   return (
-    <div className={styles.modalWrapper}>
-      <Auth 
-        supabaseClient={supabase} 
-        appearance={{ theme: ThemeSupa }} 
-        theme="dark"
-        providers={['google', 'github', 'linkedin']} 
-      />
-    </div>
+    <>
+      <div className={styles.modalWrapper}>
+        <Auth 
+          supabaseClient={supabase} 
+          appearance={{ theme: ThemeSupa,
+          variables: {
+            default: {
+              colors: {
+                inputLabelText: '#333333',
+                anchorTextColor: '#333333',
+                anchorTextHoverColor: '#FFFFFF'
+              }
+            }
+          } }} 
+          theme="dark"
+          providers={['google', 'github', 'linkedin']}
+        />
+      </div>
+    </>
   )
 }
