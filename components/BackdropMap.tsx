@@ -16,7 +16,7 @@ export default function BackdropMap() {
       container: mapContainer.current!,
       style: "mapbox://styles/mapbox/streets-v12",
       center: [lng, lat],
-      zoom: zoom
+      zoom
     })
 
     map.current.on('move', () => {
