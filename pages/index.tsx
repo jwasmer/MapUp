@@ -1,24 +1,22 @@
-import { Auth, ThemeSupa } from '@supabase/auth-ui-react'
+import { useState } from 'react'
 import { useSession, useSupabaseClient } from '@supabase/auth-helpers-react'
 import Account from '../components/Account'
 import AuthModal from '../components/AuthModal'
 import style from "../styles/Home.module.css"
 import BackdropMap from '@/components/BackdropMap'
+import MapUI from '@/components/MapUI'
 
-const Home = () => {
+export default function Home () {
+  const [accountToggle, setAccountToggle] = useState(false)
   const session = useSession()
   const supabase = useSupabaseClient()
 
   return (
     <main className={style.main}>
       <BackdropMap />
-      {!session ? (
-        <AuthModal supabase={supabase}/>
-      ) : (
-        <Account session={session} />
-      )}
+      {!session && <AuthModal supabase={supabase} />}
+      {session && !accountToggle && <MapUI />}
+      {accountToggle && session && <Account session={session} />}
     </main>
   )
 }
-
-export default Home

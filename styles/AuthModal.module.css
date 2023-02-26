@@ -8,8 +8,8 @@
   background-color: black;
   padding: 24px;
   border-radius: 10px;
-  background-color: rgba(0, 0, 0, .2);
+  background-color: hsla(153, 53%, 24%, 0.20);
   backdrop-filter: blur(15px);
-  border: 2px solid rgba(255, 255, 255, .5);
+  border: 2px solid hsl(154deg 55% 45% / 40%);
   z-index: 1;
 }
