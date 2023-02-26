@@ -7,7 +7,7 @@ import MapUI from '@/components/MapUI'
 import BackdropMap from '@/components/BackdropMap'
 
 export default function Home () {
-  const [accountToggle, setAccountToggle] = useState<boolean>(false)
+  const [showAccount, setShowAccount] = useState<boolean>(false)
   const supabase = useSupabaseClient()
   const { isLoading, session } = useSessionContext()
   
