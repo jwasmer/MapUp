@@ -19,7 +19,7 @@ export default function Home () {
     <main className={style.main}>
       <BackdropMap />
       {!session && !isLoading && <AuthModal supabase={supabase} />}
-      {session && !accountToggle && <MapUI />}
+      {session && !showAccount && <MapUI />}
       {session && <Account session={session} />}
     </main>
   )
