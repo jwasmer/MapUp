@@ -8,7 +8,7 @@ import BackdropMap from '@/components/BackdropMap'
 import Dropdown from '@/components/Dropdown'
 import SettingsIcon from '@/components/icons/SettingsIcon'
 import Searchbar from '@/components/Searchbar'
-import ExpandDownIcon from '@/components/icons/ExpandDownIcon'
+import ExpandDownIcon from '@/components/icons/DownChevronIcon'
 
 export default function Home () {
   const supabase = useSupabaseClient()
@@ -25,13 +25,7 @@ export default function Home () {
         <AuthModal supabase={supabase} />
       }
       {session && 
-        <MapUI>
-          <Searchbar />
-          <Dropdown 
-            closedIcon={<SettingsIcon color={"#FFFFFF"} />}
-            openIcon={<ExpandDownIcon color={"#FFFFFF"} />}
-          />
-        </MapUI>
+        <MapUI />
       }
       {session && 
         <Account session={session} />
