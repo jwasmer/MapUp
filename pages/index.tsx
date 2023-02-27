@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import { useSessionContext, useSupabaseClient } from '@supabase/auth-helpers-react'
 import Account from '../components/Account'
 import AuthModal from '../components/AuthModal'
@@ -8,6 +8,7 @@ import BackdropMap from '@/components/BackdropMap'
 import Dropdown from '@/components/Dropdown'
 import SettingsIcon from '@/components/icons/SettingsIcon'
 import Searchbar from '@/components/Searchbar'
+import ExpandDownIcon from '@/components/icons/ExpandDownIcon'
 
 export default function Home () {
   const supabase = useSupabaseClient()
@@ -27,7 +28,8 @@ export default function Home () {
         <MapUI>
           <Searchbar />
           <Dropdown 
-            icon={<SettingsIcon color={"#FFFFFF"} />} 
+            closedIcon={<SettingsIcon color={"#FFFFFF"} />}
+            openIcon={<ExpandDownIcon color={"#FFFFFF"} />}
           />
         </MapUI>
       }
