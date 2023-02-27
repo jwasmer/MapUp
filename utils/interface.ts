@@ -10,10 +10,11 @@ export interface ColorProps {
 }
 
 export interface DropdownProps {
-  icon?: React.ReactNode
+  closedIcon: React.ReactNode
+  openIcon: React.ReactNode
   children?: PropsWithChildren<React.ReactNode>
 }
 
 export interface MapUIProps {
-  dropdown: React.ReactElement<DropdownProps>
+  children: PropsWithChildren<React.ReactNode>
 }
