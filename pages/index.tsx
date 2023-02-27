@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useSession, useSessionContext, useSupabaseClient } from '@supabase/auth-helpers-react'
+import { useSessionContext, useSupabaseClient } from '@supabase/auth-helpers-react'
 import Account from '../components/Account'
 import AuthModal from '../components/AuthModal'
 import style from "../styles/Home.module.css"
@@ -18,9 +18,15 @@ export default function Home () {
   return (
     <main className={style.main}>
       <BackdropMap />
-      {!session && !isLoading && <AuthModal supabase={supabase} />}
-      {session && !showAccount && <MapUI />}
-      {session && <Account session={session} />}
+      {!session && !isLoading && 
+        <AuthModal supabase={supabase} />
+      }
+      {session && 
+        <MapUI />
+      }
+      {session && 
+        <Account session={session} />
+      }
     </main>
   )
 }
