@@ -1,17 +1,18 @@
-import Searchbar from "./Searchbar"
 import styles from "../styles/MapUI.module.css"
+import DownChevronIcon from "./icons/DownChevronIcon"
+import Searchbar from "./Searchbar"
 import Dropdown from "./Dropdown"
-import { DropdownProps, MapUIProps } from "@/utils/interface"
 
-export default function MapUI(props: MapUIProps) {
-
-  console.log("Props in MapUI:", props)
+export default function MapUI() {
 
   return (
     <header className={styles.nav}>
-      <form className={styles.form}>
-        {props.children}
-      </form>
+      <Searchbar />
+      <menu className={styles.menuWrapper}>
+        <Dropdown 
+          icon={<DownChevronIcon color={"#FFFFFF"} />}
+        />
+      </menu>
     </header>
   )
 }
