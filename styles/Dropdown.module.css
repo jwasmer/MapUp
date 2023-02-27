@@ -1,7 +1,3 @@
-.dropdown {
-  list-style: none;
-}
-
 .button {
   pointer-events: auto;
   margin-top: 28px;
@@ -15,9 +11,14 @@
   border-radius: 50%;
   padding: 5px;
   border: 1px solid black;
-  background-color: darkslategray;
+  background-color: rgb(73, 87, 87);
+  transition-duration: 175ms;
 }
 
-.icon {
-  color: white;
+.button:hover {
+  background-color: rgb(87, 107, 107)
+}
+
+.dropdown {
+  list-style: none;
 }
