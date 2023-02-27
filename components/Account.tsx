@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useUser, useSupabaseClient, Session } from '@supabase/auth-helpers-react'
 import { Database } from '../utils/supabase'
+import styles from "../styles/Account.module.css"
 type Profiles = Database['profiles']
 
 export default function Account({ session }: { session: Session }) {
@@ -96,7 +97,7 @@ export default function Account({ session }: { session: Session }) {
   }
 
   return (
-    <div className="form-widget">
+    <div className={styles.frame}>
       <div>
         <label htmlFor="email">Email</label>
         <input id="email" type="text" value={session.user.email} disabled />
