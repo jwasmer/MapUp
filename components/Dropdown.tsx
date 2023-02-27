@@ -11,7 +11,7 @@ export default function Dropdown(props: DropdownProps) {
   return (
     <li className={styles.dropdown}>
       <button className={styles.button} onClick={() => setShowDropdown((prevState) => {return !prevState})}>
-        { props.icon }
+        { showDropdown ? props.openIcon : props.closedIcon }
       </button>
     </li>
   )
