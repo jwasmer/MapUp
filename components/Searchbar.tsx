@@ -11,6 +11,13 @@ export default function Searchbar() {
   }
 
   return (
-    <input className={styles.search} type="text" value={searchText} onChange={handleSearchTextChange}></input>
+    <form>
+      <input 
+        className={styles.search} 
+        type="text" 
+        value={searchText} 
+        onChange={handleSearchTextChange} 
+      />
+    </form>
   )
 }
