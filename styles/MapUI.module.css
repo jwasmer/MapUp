@@ -1,0 +1,14 @@
+.nav {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  display: flex;
+}
+
+.form {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

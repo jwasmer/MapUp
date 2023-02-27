@@ -1,19 +1,15 @@
-import { useState, ChangeEvent, ChangeEventHandler } from "react"
+import Searchbar from "./Searchbar"
 import styles from "../styles/MapUI.module.css"
+import Dropdown from "./Dropdown"
 
 export default function MapUI() {
-  const [searchText, setSearchText] = useState<string>('')
 
-  const handleSearchTextChange: ChangeEventHandler<HTMLInputElement> = (
-    event: ChangeEvent<HTMLInputElement>
-  ): void => {
-    setSearchText(event.target.value)
-  }
 
   return (
-    <header>
-      <form>
-        <input className={styles.search} type="text" value={searchText} onChange={() => {handleSearchTextChange}}></input>
+    <header className={styles.nav}>
+      <form className={styles.form}>
+        <Searchbar />
+        <Dropdown />
       </form>
     </header>
   )
