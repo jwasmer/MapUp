@@ -5,6 +5,9 @@ import AuthModal from '../components/AuthModal'
 import style from "../styles/Home.module.css"
 import MapUI from '@/components/MapUI'
 import BackdropMap from '@/components/BackdropMap'
+import Dropdown from '@/components/Dropdown'
+import SettingsIcon from '@/components/icons/SettingsIcon'
+import Searchbar from '@/components/Searchbar'
 
 export default function Home () {
   const supabase = useSupabaseClient()
@@ -21,7 +24,12 @@ export default function Home () {
         <AuthModal supabase={supabase} />
       }
       {session && 
-        <MapUI />
+        <MapUI>
+          <Searchbar />
+          <Dropdown 
+            icon={<SettingsIcon color={"#FFFFFF"} />} 
+          />
+        </MapUI>
       }
       {session && 
         <Account session={session} />
