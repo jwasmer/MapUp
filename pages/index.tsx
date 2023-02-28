@@ -5,10 +5,6 @@ import AuthModal from '../components/AuthModal'
 import style from "../styles/Home.module.css"
 import MapUI from '@/components/MapUI'
 import BackdropMap from '@/components/BackdropMap'
-import Dropdown from '@/components/Dropdown'
-import SettingsIcon from '@/components/icons/SettingsIcon'
-import Searchbar from '@/components/Searchbar'
-import ExpandDownIcon from '@/components/icons/DownChevronIcon'
 
 export default function Home () {
   const supabase = useSupabaseClient()
