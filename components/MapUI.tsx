@@ -9,9 +9,6 @@ export default function MapUI() {
   return (
     <header className={styles.nav}>
       <Searchbar />
-      <div className={styles.mapSettingsWrapper}>
-        <MapButton icon={<Icon name={"add"} />} ></MapButton>
-      </div>
       <MapButton icon={<Icon name={"arrow_drop_down"} />}>
         <Menu>
           <MenuItem link={"/account"} iconLeft={<Icon name={"settings"} />}>
