@@ -5,6 +5,12 @@
   align-items: center;
 }
 
+.mapSettingsWrapper {
+  display: flex;
+  width: 100%;
+  padding-left: 28px;
+}
+
 .nav {
   pointer-events: none;
   position: fixed;
@@ -14,9 +20,4 @@
   justify-content: space-between;
   z-index: 1;
   color: var(--text-color)
-}
-
-.menuWrapper {
-  display: flex;
-  justify-content: space-evenly;
 }
