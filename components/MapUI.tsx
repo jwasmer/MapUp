@@ -6,27 +6,18 @@ import MenuItem from "./MenuItem"
 import SettingsIcon from "./icons/SettingsIcon"
 
 export default function MapUI() {
-
   return (
     <header className={styles.nav}>
       <Searchbar />
-      <menu className={styles.menuWrapper}>
         <Dropdown icon={<DownChevronIcon />}>
-          <MenuItem 
-            iconLeft={<SettingsIcon />}> 
-            Map Settings 
-          </MenuItem>
-          <MenuItem 
-            iconLeft={<SettingsIcon />}> 
-            Account 
-          </MenuItem>
-          <MenuItem 
-            iconLeft={<SettingsIcon />} 
-            iconRight={<SettingsIcon />}> 
-            Organizations 
-          </MenuItem>
+          <menu className={styles.menuWrapper}>
+            <MenuItem iconLeft={<SettingsIcon />}>Map Settings</MenuItem>
+            <MenuItem iconLeft={<SettingsIcon />}>Account</MenuItem>
+            <MenuItem iconLeft={<SettingsIcon />} iconRight={<SettingsIcon />}>
+              Organizations
+            </MenuItem>
+          </menu>
         </Dropdown>
-      </menu>
     </header>
-  )
+  );
 }
