@@ -1,23 +1,30 @@
 import styles from "../styles/MapUI.module.css"
-import DownChevronIcon from "./icons/DownArrowIcon"
+import Icon from "./Icon"
+import Menu from "./Menu"
 import Searchbar from "./Searchbar"
-import Dropdown from "./Dropdown"
+import MapButton from "./MapButton"
 import MenuItem from "./MenuItem"
-import SettingsIcon from "./icons/SettingsIcon"
 
 export default function MapUI() {
   return (
     <header className={styles.nav}>
       <Searchbar />
-        <Dropdown icon={<DownChevronIcon />}>
-          <menu className={styles.menuWrapper}>
-            <MenuItem iconLeft={<SettingsIcon />}>Map Settings</MenuItem>
-            <MenuItem iconLeft={<SettingsIcon />}>Account</MenuItem>
-            <MenuItem iconLeft={<SettingsIcon />} iconRight={<SettingsIcon />}>
-              Organizations
-            </MenuItem>
-          </menu>
-        </Dropdown>
+      <div className={styles.mapSettingsWrapper}>
+        <MapButton icon={<Icon name={"add"} />} ></MapButton>
+      </div>
+      <MapButton icon={<Icon name={"arrow_drop_down"} />}>
+        <Menu>
+          <MenuItem link={"/account"} iconLeft={<Icon name={"settings"} />}>
+            Account
+          </MenuItem>
+          <MenuItem link={"/organizations"} iconLeft={<Icon name={"settings"} />}>
+            Organizations
+          </MenuItem>
+          <MenuItem link={"/signout"} iconLeft={<Icon name={"settings"} />}>
+            Sign Out
+          </MenuItem>
+        </Menu>
+      </MapButton>
     </header>
   );
 }
