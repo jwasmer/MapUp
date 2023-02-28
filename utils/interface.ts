@@ -6,12 +6,13 @@ export interface MapContext {
 }
 
 export interface ColorProps {
-  color: string
+  color?: string
 }
 
-export interface MenuItemProps {
-  icon: React.ReactNode
-}
+export type MenuItemProps = PropsWithChildren <{
+  iconLeft?: React.ReactNode
+  iconRight?: React.ReactNode
+}>
 
 export type DropdownProps = PropsWithChildren<{
   icon: React.ReactNode
