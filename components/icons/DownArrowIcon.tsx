@@ -1,11 +1,10 @@
 import { ColorProps } from "@/utils/interface"
 
-export default function ExpandDownIcon({ color }: ColorProps) {
-  console.log(color)
+export default function DownArrowIcon({ color }: ColorProps) {
 
   return (
     <span className="material-symbols-outlined" style={{color}}>
-      expand_more
+      arrow_drop_down
     </span>
   )
 }
