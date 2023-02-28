@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { useSessionContext, useSupabaseClient } from '@supabase/auth-helpers-react'
+import { CSSTransition } from 'react-transition-group'
 import Account from '../components/Account'
 import AuthModal from '../components/AuthModal'
 import style from "../styles/Home.module.css"
