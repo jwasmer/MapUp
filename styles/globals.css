@@ -16,6 +16,8 @@ body {
   --text-color: #dadce1;
   --nav-size: 60px;
   --speed: 500ms;
+  --border-radius: 8px;
+  --border: 1px solid #484a4d;
 }
 
 ul {
@@ -30,4 +32,8 @@ ul {
   'wght' 400,
   'GRAD' 0,
   'opsz' 48
+}
+
+li {
+  list-style: none;
 }

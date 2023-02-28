@@ -12,6 +12,8 @@
   width: 100vw;
   display: flex;
   justify-content: space-between;
+  z-index: 1;
+  color: var(--text-color)
 }
 
 .menuWrapper {

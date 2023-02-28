@@ -1,4 +1,5 @@
 .button {
+  color: inherit;
   pointer-events: auto;
   margin-top: 28px;
   margin-right: 28px;
@@ -11,14 +12,22 @@
   border-radius: 50%;
   padding: 5px;
   border: 1px solid black;
-  background-color: rgb(73, 87, 87);
+  background-color: var(--bg);
   transition-duration: 175ms;
 }
 
 .button:hover {
-  background-color: rgb(87, 107, 107)
+  background-color: var(--bg-accent);
 }
 
-.dropdown {
-  list-style: none;
+.menuWrapper {
+  pointer-events: auto;
+  position: absolute;
+  top: 77px;
+  width: 200px;
+  transform: translateX(-70%);
+  background-color: var(--bg);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  padding: 1rem;
 }
