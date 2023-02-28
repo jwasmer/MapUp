@@ -10,3 +10,8 @@
 .menuItem:hover {
   background-color: var(--bg-accent);
 }
+
+.menuText {
+  width: 100%;
+  padding-left: 8px;
+}
