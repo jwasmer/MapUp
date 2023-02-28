@@ -9,6 +9,10 @@ export interface ColorProps {
   color: string
 }
 
+export interface MenuItemProps {
+  icon: React.ReactNode
+}
+
 export type DropdownProps = PropsWithChildren<{
   icon: React.ReactNode
 }>
