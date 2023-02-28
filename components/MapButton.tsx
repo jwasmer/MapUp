@@ -1,22 +1,21 @@
 import { useState } from "react"
-import { DropdownProps } from "@/utils/interface"
-import styles from "../styles/Dropdown.module.css"
+import { MapButtonProps } from "@/utils/interface"
+import Menu from "./Menu"
+import styles from "../styles/MapButton.module.css"
 
-export default function Dropdown(props: DropdownProps) {
+export default function MapButton(props: MapButtonProps) {
   const [open, setOpen] = useState<boolean>(false)
 
   return (
-    <ul>
+    <div>
       <button className={styles.button} onClick={() => {
         setOpen((prevState => !prevState))
       }}>
         {props.icon}
       </button>
       {open && 
-        <menu className={styles.menuWrapper}>
-          {props.children}
-        </menu>
+       props.children
       }
-    </ul>
+    </div>
   )
 }
