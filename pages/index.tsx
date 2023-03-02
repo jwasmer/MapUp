@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import { useSessionContext, useSupabaseClient } from '@supabase/auth-helpers-react'
 import Account from './account'
 import AuthModal from '../components/AuthModal'
@@ -9,10 +8,6 @@ import BackdropMap from '@/components/BackdropMap'
 export default function Home () {
   const supabase = useSupabaseClient()
   const { isLoading, session } = useSessionContext()
-  
-  useEffect(() => {
-    console.log(session)
-  }, [session])
 
   return (
     <main className={style.main}>
@@ -24,7 +19,7 @@ export default function Home () {
         <MapUI />
       }
       {session && 
-        <Account session={session} />
+        <Account />
       }
     </main>
   )
