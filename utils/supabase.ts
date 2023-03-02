@@ -61,13 +61,14 @@ export interface Database {
   },
   organizations: {
     organization_id: string | null
-    name: string | null
+    organization_name: string
   },
   join_users_organizations: {
     user_organization_id: string | null
     organization_id: string | null
     user_id: string | null
-  }
+    user_organization_role: string | null
+  },
   storage: {
     Tables: {
       buckets: {
