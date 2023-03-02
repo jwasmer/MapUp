@@ -49,7 +49,7 @@ export interface Database {
       [_ in never]: never
     }
   }
-  profiles: {
+  users: {
     email: string | undefined
     first_name: string | null
     last_name: string | null
