@@ -50,6 +50,7 @@ export interface Database {
     }
   }
   users: {
+    user_id: string
     email: string | undefined
     first_name: string | null
     last_name: string | null
@@ -57,6 +58,15 @@ export interface Database {
     city: string | null
     home_state: string | null
     zipcode: string | null
+  },
+  organizations: {
+    organization_id: string | null
+    name: string | null
+  },
+  join_users_organizations: {
+    user_organization_id: string | null
+    organization_id: string | null
+    user_id: string | null
   }
   storage: {
     Tables: {
