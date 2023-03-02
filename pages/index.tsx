@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useSessionContext, useSupabaseClient } from '@supabase/auth-helpers-react'
-import Account from '../components/Account'
+import Account from './account'
 import AuthModal from '../components/AuthModal'
 import style from "../styles/Home.module.css"
 import MapUI from '@/components/MapUI'
