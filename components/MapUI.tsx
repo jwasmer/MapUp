@@ -1,4 +1,5 @@
 import styles from "../styles/MapUI.module.css"
+import Link from "next/link"
 import Icon from "./Icon"
 import Menu from "./Menu"
 import Searchbar from "./Searchbar"
@@ -11,13 +12,18 @@ export default function MapUI() {
       <Searchbar />
       <MapButton icon={<Icon name={"arrow_drop_down"} />}>
         <Menu>
-          <MenuItem link={"/account"} iconLeft={<Icon name={"settings"} />}>
-            Account
-          </MenuItem>
-          <MenuItem link={"/organizations"} iconLeft={<Icon name={"settings"} />}>
+          <Link href="/account">
+            <MenuItem iconLeft={<Icon color={"#FFFFFF"} name={"settings"} />}>
+              Account
+            </MenuItem>
+          </Link>
+          <MenuItem iconLeft={<Icon color={"#FFFFFF"} name={"settings"} />}>
             Organizations
           </MenuItem>
-          <MenuItem link={"/signout"} iconLeft={<Icon name={"settings"} />}>
+          <MenuItem iconLeft={<Icon color={"#FFFFFF"} name={"settings"} />}>
+            Sign Out
+          </MenuItem>
+          <MenuItem iconLeft={<Icon color={"#FFFFFF"} name={"settings"} />}>
             Sign Out
           </MenuItem>
         </Menu>
