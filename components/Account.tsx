@@ -2,19 +2,19 @@ import { useState, useEffect } from 'react'
 import { useUser, useSupabaseClient, Session } from '@supabase/auth-helpers-react'
 import { Database } from '../utils/supabase'
 import styles from "../styles/Account.module.css"
-type Profiles = Database['profiles']
+type Users = Database['users']
 
 export default function Account({ session }: { session: Session }) {
   const supabase = useSupabaseClient<Database>()
   const user = useUser()
   const [loading, setLoading] = useState(true)
-  const [email, setEmail] = useState<Profiles['email']>(undefined)
-  const [first_name, setFirstName] = useState<Profiles['first_name']>(null)
-  const [last_name, setLastName] = useState<Profiles['last_name']>(null)
-  const [street_address, setStreetAddress] = useState<Profiles['street_address']>(null)
-  const [city, setCity] = useState<Profiles['city']>(null)
-  const [home_state, setHomeState] = useState<Profiles['home_state']>(null)
-  const [zipcode, setZipcode] = useState<Profiles['zipcode']>(null)
+  const [email, setEmail] = useState<Users['email']>(undefined)
+  const [first_name, setFirstName] = useState<Users['first_name']>(null)
+  const [last_name, setLastName] = useState<Users['last_name']>(null)
+  const [street_address, setStreetAddress] = useState<Users['street_address']>(null)
+  const [city, setCity] = useState<Users['city']>(null)
+  const [home_state, setHomeState] = useState<Users['home_state']>(null)
+  const [zipcode, setZipcode] = useState<Users['zipcode']>(null)
 
   useEffect(() => {
     getProfile()
@@ -26,9 +26,9 @@ export default function Account({ session }: { session: Session }) {
       if (!user) throw new Error('No user')
 
       let { data, error, status } = await supabase
-        .from('profiles')
+        .from('users')
         .select(`email, first_name, last_name, street_address, city, home_state, zipcode`)
-        .eq('id', user.id)
+        .eq('user_id', user.id)
         .maybeSingle()
 
       if (error && status !== 406) {
@@ -45,8 +45,8 @@ export default function Account({ session }: { session: Session }) {
         setZipcode(data.zipcode)
       }
     } catch (error) {
-      alert('Error loading user data!')
-      console.log(error)
+      alert('Error loading user data! (one)')
+      console.log("First error:", error)
     } finally {
       setLoading(false)
     }
@@ -61,13 +61,13 @@ export default function Account({ session }: { session: Session }) {
     home_state,
     zipcode,
   }: {
-    email: Profiles['email']
-    first_name: Profiles['first_name']
-    last_name: Profiles['last_name']
-    street_address: Profiles['street_address']
-    city: Profiles['city']
-    home_state: Profiles['home_state']
-    zipcode: Profiles['zipcode']
+    email: Users['email']
+    first_name: Users['first_name']
+    last_name: Users['last_name']
+    street_address: Users['street_address']
+    city: Users['city']
+    home_state: Users['home_state']
+    zipcode: Users['zipcode']
   }) {
     try {
       setLoading(true)
@@ -85,12 +85,12 @@ export default function Account({ session }: { session: Session }) {
         updated_at: new Date().toISOString(),
       }
 
-      let { error } = await supabase.from('profiles').upsert(updates)
+      let { error } = await supabase.from('users').upsert(updates)
       if (error) throw error
       alert('Profile updated!')
     } catch (error) {
-      alert('Error updating the data!')
-      console.log(error)
+      alert('Error updating the data! (two)')
+      console.log("Second Error:", error)
     } finally {
       setLoading(false)
     }
