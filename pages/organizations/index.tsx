@@ -1,5 +1,9 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { useUser, useSupabaseClient, Session } from '@supabase/auth-helpers-react'
+import { Database } from '../../utils/supabase'
+import styles from "../../styles/Organizations.module.css"
 import CreateOrganization from "../../components/CreateOrganization"
+type Organizations = Database['organizations']
 
 export default function Organizations() {
   const [search, setSearch] = useState('')
