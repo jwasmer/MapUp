@@ -1,23 +1,21 @@
 import { useState, useEffect } from "react"
-import { useUser, useSupabaseClient, Session, useSessionContext } from '@supabase/auth-helpers-react'
-import { Database } from '../../utils/supabase'
-import styles from "../../styles/Organizations.module.css"
-import CreateOrganization from "../../components/CreateOrganization"
+import { useSupabaseClient, useSessionContext } from '@supabase/auth-helpers-react'
+import { Database } from "@/utils/supabase"
+import { OrgData } from "@/utils/interface"
+import DisplayUserOrgs from "@/components/DisplayUserOrganizations"
+import CreateOrganization from "@/components/CreateOrganization"
 type Organizations = Database['organizations']
-type JoinOrgsUsers = Database['join_users_organizations']
 
 export default function Organizations() {
   const supabase = useSupabaseClient<Database>()
   const { session } = useSessionContext()
   const [loading, setLoading] = useState(true)
-  const [user_organization_role, setUserOrgRole] = useState<JoinOrgsUsers['user_organization_role']>(null)
-  const [organization_id, setOrgId] = useState<Organizations['organization_id']>(null)
-  const [organization_name, setOrgnName] = useState<Organizations['organization_id']>(null)
+  const [orgData, setOrgData] = useState<OrgsData[] | null>(null)
   const [search, setSearch] = useState<string>('')
 
   useEffect(() => {
+    console.log(session)
     if (session) getUserOrgs()
-    console.log(session?.user.id)
   }, [session])
 
   async function getUserOrgs() {
@@ -27,17 +25,24 @@ export default function Organizations() {
       
       let { data, error, status } = await supabase
         .from('join_users_organizations')
-        .select('organization_id, user_id, user_organization_role')
+        .select()
         .eq('user_id', session.user.id)
-        .maybeSingle()
+        .select(`organization_id, user_organization_role, 
+        organizations (
+          organization_name
+        )`)
+
+      console.log(data)
+
+      if (data) {
+        setOrgData(data as OrgsData[])
+      }
 
       if (error && status !== 406) {
-        throw error
+        console.log("Error fetching from join_users_organizations table")
+        throw Error
       }
 
-      if (!data) {
-        console.log(data)
-      }
     } catch (error) {
       alert ('Error loading organizations data!')
       console.log(error)
@@ -52,6 +57,7 @@ export default function Organizations() {
         <h2>
           Your Organizations
         </h2>
+        <DisplayUserOrgs />
         <form>
           <label htmlFor="search-orgs">Search Organizations</label>
           <input id="search-orgs" type="text" value={search} placeholder="Search for organizations..." onChange={(event) => setSearch(event.target.value)} />
