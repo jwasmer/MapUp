@@ -3,7 +3,6 @@ import { useSupabaseClient, useSessionContext } from '@supabase/auth-helpers-rea
 import { Database } from "@/utils/supabase"
 import { OrgData } from "@/utils/interface"
 import styles from "@/styles/Organizations.module.css"
-type Organizations = Database['organizations']
 
 export default function DisplayUserOrgs() {
   const supabase = useSupabaseClient<Database>()
@@ -11,18 +10,34 @@ export default function DisplayUserOrgs() {
   const [loading, setLoading] = useState(true)
   const [orgData, setOrgData] = useState<OrgData[] | null>(null)
   const [orgCards, setOrgCards] = useState<JSX.Element[] | null>([])
-  const [search, setSearch] = useState<string>('')
 
   useEffect(() => {
-    console.log(session)
-    if (session) getUserOrgs()
+    if (session) {
+      getUserOrgs()
+      const orgUpdates = supabase.channel('org_updates');
+
+      supabase
+        .channel('org_updates')
+        .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'join_users_organizations', filter: `user_id=eq.${session.user.id}`}, () => {
+          getUserOrgs()
+        })
+        .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'join_users_organizations', filter: `user_id=eq.${session.user.id}`}, () => {
+          getUserOrgs()
+        })
+        .on('postgres_changes', { event: 'DELETE', schema: 'public', table: 'join_users_organizations', filter: `user_id=eq.${session.user.id}`}, () => {
+          getUserOrgs()
+        })
+        .subscribe()
+      
+      return () => {supabase.removeChannel(orgUpdates)}
+    }
   }, [session])
 
   useEffect(() => {
     if (orgData) {
       const buildOrgCards = (orgData: OrgData[]) => {
         return orgData.map((org) => {
-          return <div className={styles.org}>{org.organizations.organization_name}</div>
+          return <div className={styles.org} key={org.organization_id}>{org.organizations.organization_name}</div>
         })
       }
 
