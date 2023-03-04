@@ -17,7 +17,6 @@ export default function Account() {
   const [home_state, setHomeState] = useState<Users['home_state']>(null)
   const [zipcode, setZipcode] = useState<Users['zipcode']>(null)
 
-
   useEffect(() => {
     if (session) getUser()
   }, [session])
@@ -162,7 +161,6 @@ export default function Account() {
 
         <div>
           <button
-            className="button primary block"
             onClick={() => updateProfile({
               email,
               first_name,
@@ -179,7 +177,7 @@ export default function Account() {
         </div>
 
         <div>
-          <button className="button block" onClick={() => supabase.auth.signOut()}>
+          <button onClick={() => supabase.auth.signOut()}>
             Sign Out
           </button>
         </div>
