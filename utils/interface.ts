@@ -1,3 +1,4 @@
+import { PostgrestError } from "@supabase/supabase-js"
 import { PropsWithChildren } from "react"
 
 export interface IconProps {
@@ -14,8 +15,21 @@ export interface MapContext {
   time: string
 }
 
+export interface ProcessEnv {
+  NEXT_PUBLIC_SUPABASE_URL: string
+  NEXT_PUBLIC_SUPABASE_ANON_KEY: string
+}
+
 export type MenuItemProps = PropsWithChildren <{
   iconLeft?: React.ReactNode
   iconRight?: React.ReactNode
   link?: string
 }>
+
+export interface OrgData {
+  organization_id: string | null;
+  organizations: {
+    organization_name: string;
+  };
+  user_organization_role: string;
+}
