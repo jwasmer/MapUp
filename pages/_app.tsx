@@ -1,5 +1,4 @@
 import '@/styles/globals.css'
-import { useState } from 'react'
 import { createBrowserSupabaseClient } from '@supabase/auth-helpers-nextjs'
 import { SessionContextProvider, Session } from '@supabase/auth-helpers-react'
 import { AppProps } from 'next/app'
@@ -11,10 +10,16 @@ export default function MyApp({
   pageProps,
 }: AppProps<{ initialSession: Session }>) {
 
-  const [supabase] = useState(() => createBrowserSupabaseClient())
+  const supabaseUrl = (process.env.NEXT_PUBLIC_SUPABASE_URL as string)
+  const supabaseKey = (process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY as string)
+
+  const supabaseClient = createBrowserSupabaseClient({
+    supabaseUrl,
+    supabaseKey
+  })
 
   return (
-    <SessionContextProvider supabaseClient={supabase} initialSession={pageProps.initialSession}>
+    <SessionContextProvider supabaseClient={supabaseClient} initialSession={pageProps.initialSession}>
       <MapStateContext.Provider value={mapState}>
         <Component {...pageProps} />
       </MapStateContext.Provider>
