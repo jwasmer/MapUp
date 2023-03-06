@@ -1,7 +1,28 @@
-.orgsWrapper {
+.deleteButton {
+  border: none;
+  background-color: var(--bg);
+  color: var(--text-color);
+  border-radius: 5px;
+}
 
+.deleteButton:hover {
+  background-color: var(--bg-accent);
+  cursor: pointer;
+}
+
+.orgsWrapper {
+  width: 300px;
 }
 
 .org {
-  
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 8px;
+}
+
+.org:hover {
+  background-color: var(--bg-accent);
+  color: var(--text-color);
+  cursor: pointer;
 }
