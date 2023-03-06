@@ -1,9 +1,8 @@
-import { PostgrestError } from "@supabase/supabase-js"
 import { PropsWithChildren } from "react"
 
 export interface IconProps {
   color?: string
-  name: "arrow_drop_down" | "settings" | "navigate_next" | "add"
+  name: "arrow_drop_down" | "settings" | "navigate_next" | "add" | "delete"
 }
 
 export type MapButtonProps = PropsWithChildren<{
