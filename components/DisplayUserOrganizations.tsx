@@ -42,7 +42,9 @@ export default function DisplayUserOrgs() {
       const buildOrgCards = (orgData: OrgData[]) => {
         return orgData.map((org) => {
           return <div className={styles.org}>
-            <h3 key={org.organization_id}>
+            <h3 
+              className={styles.title}
+              key={org.organization_id}>
               {org.organizations.organization_name}
             </h3>
             <button 
