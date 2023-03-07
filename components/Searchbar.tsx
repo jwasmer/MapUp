@@ -1,13 +1,12 @@
-import { useState, ChangeEvent, ChangeEventHandler } from "react"
+import { ChangeEvent, ChangeEventHandler } from "react"
 import styles from "../styles/Searchbar.module.css"
 
-export default function Searchbar() {
-  const [searchText, setSearchText] = useState<string>('')
+export default function Searchbar({ searchTerm }: { searchTerm: string }, { setSearchTerm }: { setSearchTerm: React.Dispatch<React.SetStateAction<string>> }) {
 
   const handleSearchTextChange: ChangeEventHandler<HTMLInputElement> = (
     event: ChangeEvent<HTMLInputElement>
   ): void => {
-    setSearchText(event.target.value)
+    setSearchTerm(event.target.value)
   }
 
   return (
@@ -15,9 +14,12 @@ export default function Searchbar() {
       <input 
         className={styles.search} 
         type="text" 
-        value={searchText} 
-        onChange={handleSearchTextChange} 
+        value={searchTerm} 
+        onChange={(event) => {handleSearchTextChange(event)}} 
       />
+      <button type="submit">
+        Submit
+      </button>
     </form>
   )
 }
