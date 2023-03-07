@@ -32,3 +32,8 @@ export interface OrgData {
   };
   user_organization_role: string;
 }
+
+export interface SearchbarProps {
+  setSearchTerm: React.Dispatch<React.SetStateAction<string>>;
+  searchTerm: string;
+}
