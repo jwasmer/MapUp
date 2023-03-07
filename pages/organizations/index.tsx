@@ -7,16 +7,13 @@ export default function Organizations() {
 
   return (
     <>
-      <div className="">      
+      <div className="">
+        <CreateOrganization />
         <h2>
           Your Organizations
         </h2>
         <DisplayUserOrgs />
-        <form>
-          <label htmlFor="search-orgs">Search Organizations</label>
-          <input id="search-orgs" type="text" value={search} placeholder="Search for organizations..." onChange={(event) => setSearch(event.target.value)} />
-        </form>
-        <CreateOrganization />
+        
       </div>
     </>
   )
