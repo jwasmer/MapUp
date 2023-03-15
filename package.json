@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "gentypes": "supabase gen types typescript --db-url postgresql://postgres:jjOCzNijANtBcQ33@db.lgddjyttiuonovokmhnf.supabase.co:5432/postgres"
   },
   "dependencies": {
     "@next/font": "13.1.6",
@@ -31,6 +32,7 @@
   },
   "devDependencies": {
     "@types/react-transition-group": "^4.4.5",
+    "cypress": "^12.8.0",
     "supabase": "^1.38.7"
   }
 }
