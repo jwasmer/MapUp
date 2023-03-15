@@ -1,3 +1,4 @@
+import { PostgrestError, PostgrestSingleResponse } from "@supabase/supabase-js"
 import { PropsWithChildren } from "react"
 
 export interface IconProps {
@@ -25,15 +26,25 @@ export type MenuItemProps = PropsWithChildren <{
   link?: string
 }>
 
+export interface OrgCard {
+  orgData: OrgData
+}
+
 export interface OrgData {
-  organization_id: string | null;
+  organization_id: string;
   organizations: {
     organization_name: string;
   };
   user_organization_role: string;
 }
 
+export interface SearchResult {
+  organization_id: string | null
+  organization_name: string
+}
+
 export interface SearchbarProps {
   setSearchTerm: React.Dispatch<React.SetStateAction<string>>;
   searchTerm: string;
+  runSearch: Function
 }

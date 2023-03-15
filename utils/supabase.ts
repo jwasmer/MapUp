@@ -7,149 +7,81 @@ export type Json =
   | Json[]
 
 export interface Database {
-  graphql_public: {
-    Tables: {
-      [_ in never]: never
-    }
-    Views: {
-      [_ in never]: never
-    }
-    Functions: {
-      graphql: {
-        Args: {
-          operationName?: string
-          query?: string
-          variables?: Json
-          extensions?: Json
-        }
-        Returns: Json
-      }
-    }
-    Enums: {
-      [_ in never]: never
-    }
-    CompositeTypes: {
-      [_ in never]: never
-    }
-  }
   public: {
     Tables: {
-      [_ in never]: never
-    }
-    Views: {
-      [_ in never]: never
-    }
-    Functions: {
-      [_ in never]: never
-    }
-    Enums: {
-      [_ in never]: never
-    }
-    CompositeTypes: {
-      [_ in never]: never
-    }
-  }
-  users: {
-    user_id: string
-    email: string | undefined
-    first_name: string | null
-    last_name: string | null
-    street_address: string | null
-    city: string | null
-    home_state: string | null
-    zipcode: string | null
-  },
-  organizations: {
-    organization_id: string | null
-    organization_name: string
-  },
-  join_users_organizations: {
-    user_organization_id: string | null
-    organization_id: string | null
-    user_id: string | null
-    user_organization_role: string | null
-  },
-  storage: {
-    Tables: {
-      buckets: {
+      join_users_organizations: {
         Row: {
           created_at: string | null
-          id: string
-          name: string
-          owner: string | null
-          public: boolean | null
-          updated_at: string | null
+          organization_id: string | null
+          user_id: string | null
+          user_organization_id: string
+          user_organization_role: string | null
         }
         Insert: {
           created_at?: string | null
-          id: string
-          name: string
-          owner?: string | null
-          public?: boolean | null
-          updated_at?: string | null
+          organization_id?: string | null
+          user_id?: string | null
+          user_organization_id: string
+          user_organization_role?: string | null
         }
         Update: {
           created_at?: string | null
-          id?: string
-          name?: string
-          owner?: string | null
-          public?: boolean | null
-          updated_at?: string | null
+          organization_id?: string | null
+          user_id?: string | null
+          user_organization_id?: string
+          user_organization_role?: string | null
         }
       }
-      migrations: {
+      organizations: {
         Row: {
-          executed_at: string | null
-          hash: string
-          id: number
-          name: string
-        }
-        Insert: {
-          executed_at?: string | null
-          hash: string
-          id: number
-          name: string
-        }
-        Update: {
-          executed_at?: string | null
-          hash?: string
-          id?: number
-          name?: string
-        }
-      }
-      objects: {
-        Row: {
-          bucket_id: string | null
           created_at: string | null
-          id: string
-          last_accessed_at: string | null
-          metadata: Json | null
-          name: string | null
-          owner: string | null
-          path_tokens: string[] | null
-          updated_at: string | null
+          organization_id: string
+          organization_name: string
         }
         Insert: {
-          bucket_id?: string | null
           created_at?: string | null
-          id?: string
-          last_accessed_at?: string | null
-          metadata?: Json | null
-          name?: string | null
-          owner?: string | null
-          path_tokens?: string[] | null
-          updated_at?: string | null
+          organization_id: string
+          organization_name: string
         }
         Update: {
-          bucket_id?: string | null
           created_at?: string | null
-          id?: string
-          last_accessed_at?: string | null
-          metadata?: Json | null
-          name?: string | null
-          owner?: string | null
-          path_tokens?: string[] | null
+          organization_id?: string
+          organization_name?: string
+        }
+      }
+      users: {
+        Row: {
+          city: string | null
+          email: string | null
+          first_name: string | null
+          home_state: string | null
+          last_name: string | null
+          street_address: string | null
+          updated_at: string | null
+          user_id: string
+          zipcode: string | null
+        }
+        Insert: {
+          city?: string | null
+          email?: string | null
+          first_name?: string | null
+          home_state?: string | null
+          last_name?: string | null
+          street_address?: string | null
           updated_at?: string | null
+          user_id: string
+          zipcode?: string | null
+        }
+        Update: {
+          city?: string | null
+          email?: string | null
+          first_name?: string | null
+          home_state?: string | null
+          last_name?: string | null
+          street_address?: string | null
+          updated_at?: string | null
+          user_id?: string
+          zipcode?: string | null
         }
       }
     }
@@ -157,50 +89,12 @@ export interface Database {
       [_ in never]: never
     }
     Functions: {
-      extension: {
+      delete_organization: {
         Args: {
-          name: string
+          org_id: string
+          auth_id: string
         }
-        Returns: string
-      }
-      filename: {
-        Args: {
-          name: string
-        }
-        Returns: string
-      }
-      foldername: {
-        Args: {
-          name: string
-        }
-        Returns: string[]
-      }
-      get_size_by_bucket: {
-        Args: Record<PropertyKey, never>
-        Returns: {
-          size: number
-          bucket_id: string
-        }[]
-      }
-      search: {
-        Args: {
-          prefix: string
-          bucketname: string
-          limits?: number
-          levels?: number
-          offsets?: number
-          search?: string
-          sortcolumn?: string
-          sortorder?: string
-        }
-        Returns: {
-          name: string
-          id: string
-          updated_at: string
-          created_at: string
-          last_accessed_at: string
-          metadata: Json
-        }[]
+        Returns: undefined
       }
     }
     Enums: {
