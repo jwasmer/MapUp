@@ -1,23 +1,19 @@
-import { ChangeEvent, ChangeEventHandler } from "react"
+import { SearchbarProps } from "@/utils/interface"
 import styles from "../styles/Searchbar.module.css"
 
-export default function Searchbar({ searchTerm }: { searchTerm: string }, { setSearchTerm }: { setSearchTerm: React.Dispatch<React.SetStateAction<string>> }) {
-
-  const handleSearchTextChange: ChangeEventHandler<HTMLInputElement> = (
-    event: ChangeEvent<HTMLInputElement>
-  ): void => {
-    setSearchTerm(event.target.value)
-  }
-
+export default function Searchbar(props: SearchbarProps) {
+// move searchTerm state into Searchbar
   return (
-    <form>
+    <form onSubmit={() => {
+      props.runSearch(props.searchTerm)
+    }}>
       <input 
         className={styles.search} 
         type="text" 
-        value={searchTerm} 
-        onChange={(event) => {handleSearchTextChange(event)}} 
+        value={props.searchTerm} 
+        onChange={(event) => {props.setSearchTerm(event.target.value)}} 
       />
-      <button type="submit">
+      <button type="submit" >
         Submit
       </button>
     </form>
