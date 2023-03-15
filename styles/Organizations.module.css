@@ -13,23 +13,3 @@
 .orgsWrapper {
   width: 480px;
 }
-
-.org {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin: 8px;
-}
-
-.org:hover {
-  background-color: var(--bg-accent);
-  color: var(--text-color);
-  cursor: pointer;
-}
-
-.title {
-  width: 380px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-}

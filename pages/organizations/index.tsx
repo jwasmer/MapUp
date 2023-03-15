@@ -1,6 +1,7 @@
 import { useState } from "react"
 import DisplayUserOrgs from "@/components/DisplayUserOrganizations"
 import CreateOrganization from "@/components/CreateOrganization"
+import SearchOrgs from "@/components/SearchOrgs"
 
 export default function Organizations() {
   const [search, setSearch] = useState<string>('')
@@ -13,7 +14,7 @@ export default function Organizations() {
           Your Organizations
         </h2>
         <DisplayUserOrgs />
-        
+        <SearchOrgs />
       </div>
     </>
   )
