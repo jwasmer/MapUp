@@ -1,21 +1,25 @@
-import { SearchbarProps } from "@/utils/interface"
-import styles from "../styles/Searchbar.module.css"
+import { useState } from "react";
+import { SearchbarProps } from "@/utils/interface";
+import styles from "../styles/Searchbar.module.css";
 
 export default function Searchbar(props: SearchbarProps) {
-// move searchTerm state into Searchbar
+  const [searchTerm, setSearchTerm] = useState<string>("");
+
   return (
-    <form onSubmit={() => {
-      props.runSearch(props.searchTerm)
-    }}>
-      <input 
-        className={styles.search} 
-        type="text" 
-        value={props.searchTerm} 
-        onChange={(event) => {props.setSearchTerm(event.target.value)}} 
+    <form
+      onSubmit={(event) => {
+        props.runSearch(event, searchTerm);
+      }}
+    >
+      <input
+        className={styles.search}
+        type="text"
+        value={searchTerm}
+        onChange={(event) => {
+          setSearchTerm(event.target.value);
+        }}
       />
-      <button type="submit" >
-        Submit
-      </button>
+      <button type="submit">Submit</button>
     </form>
-  )
+  );
 }

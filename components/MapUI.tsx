@@ -8,17 +8,15 @@ import Searchbar from "./Searchbar";
 import MapButton from "./MapButton";
 import MenuItem from "./MenuItem";
 import { Database } from "@/utils/supabase";
-type OrganizationRow = Database['public']['Tables']['organizations']['Row']
-type Result = Pick<OrganizationRow, 'organization_id' | 'organization_name'>
-
+type OrganizationRow = Database["public"]["Tables"]["organizations"]["Row"];
+type Result = Pick<OrganizationRow, "organization_id" | "organization_name">;
 
 export default function MapUI() {
   const supabase = useSupabaseClient<Database>();
-  const [searchTerm, setSearchTerm] = useState("");
   const [results, setResults] = useState<Result[]>([]);
   const [loading, setLoading] = useState(false);
 
-  async function searchAddresses(searchTerm: string) {
+  async function searchAddresses(event: HTMLFormElement, searchTerm: string) {
     event?.preventDefault();
     try {
       setLoading(true);
@@ -50,11 +48,7 @@ export default function MapUI() {
 
   return (
     <header className={styles.nav}>
-      <Searchbar
-        searchTerm={searchTerm}
-        setSearchTerm={setSearchTerm}
-        runSearch={searchAddresses}
-      />
+      <Searchbar runSearch={searchAddresses} />
       <MapButton icon={<Icon name={"arrow_drop_down"} />}>
         <Menu>
           <Link href="/account">

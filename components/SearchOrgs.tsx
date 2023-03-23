@@ -8,12 +8,13 @@ import { SearchResult } from "@/utils/interface";
 
 export default function SearchOrgs() {
   const supabase = useSupabaseClient<Database>();
-  const [searchTerm, setSearchTerm] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const [results, setResults] = useState<SearchResult[]>([]);
 
-  async function searchOrgNames(searchTerm: string) {
-    event?.preventDefault(); // always try to pass through specific event argument. otherwise this defaults to the window event, and the window event is just the last event that happened in the window. This might be what you want, but it might not be. If you're using this, pass event through. Also, consider building this into a reusable component. It doesn't really need to live here, it should live in the form.
+  // I want to move as much code as possuble into SearchBar
+
+  async function searchOrgNames(event: HTMLFormElement, searchTerm: string) {
+    event?.preventDefault();
     try {
       setLoading(true);
 
@@ -41,8 +42,6 @@ export default function SearchOrgs() {
     }
   }
 
-  console.log(results);
-
   function searchResultCards(results: SearchResult[]) {
     console.log(results);
     return results.map((result) => {
@@ -58,11 +57,7 @@ export default function SearchOrgs() {
   return (
     <div>
       <h3>Join new organizations</h3>
-      <Searchbar
-        searchTerm={searchTerm}
-        setSearchTerm={setSearchTerm}
-        runSearch={searchOrgNames}
-      />
+      <Searchbar runSearch={searchOrgNames} />
       {results && searchResultCards(results)}
     </div>
   );

@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { Database } from "../utils/supabase"
 import { useSessionContext, useSupabaseClient } from "@supabase/auth-helpers-react"
 import { v4 as uuidv4 } from 'uuid'
-type Organizations = Database['organizations']
+type Organizations = Database['public']['Tables']['organizations']['Row']
 
 export default function CreateOrganization() {
   const supabase = useSupabaseClient()
@@ -22,7 +22,7 @@ export default function CreateOrganization() {
 
     try {
       setLoading(true)
-      if (!session!.user) throw Error('No user')
+      if (!session) throw Error('No user')
 
       const orgUpdates = {
         organization_id,
