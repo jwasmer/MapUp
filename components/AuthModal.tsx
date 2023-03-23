@@ -6,7 +6,7 @@ export default function Account({ supabase }: { supabase: SupabaseClient }) {
   
   return (
     <>
-      <div className={styles.modalWrapper}>
+      <div className={styles.modalWrapper} data-cy="auth-modal-wrapper">
         <Auth 
           supabaseClient={supabase} 
           appearance={{ theme: ThemeSupa,
