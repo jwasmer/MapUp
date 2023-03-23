@@ -1,9 +1,10 @@
 import { defineConfig } from "cypress";
+import tasks from '@/cypress/plugins';
 
 export default defineConfig({
   e2e: {
     setupNodeEvents(on, config) {
-      // implement node event listeners here
+      tasks(on, config);
     },
   },
 });
