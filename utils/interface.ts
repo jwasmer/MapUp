@@ -1,4 +1,3 @@
-import { PostgrestError, PostgrestSingleResponse } from "@supabase/supabase-js"
 import { PropsWithChildren } from "react"
 
 export interface IconProps {
@@ -44,7 +43,5 @@ export interface SearchResult {
 }
 
 export interface SearchbarProps {
-  setSearchTerm: React.Dispatch<React.SetStateAction<string>>;
-  searchTerm: string;
   runSearch: Function
 }
