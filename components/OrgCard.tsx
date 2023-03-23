@@ -1,5 +1,5 @@
 import Icon from "@/components/Icon";
-import { SyntheticEvent, useState } from "react";
+import { useState } from "react";
 import {
   useSessionContext,
   useSupabaseClient,
