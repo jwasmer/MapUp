@@ -27,6 +27,6 @@ export default function BackdropMap() {
   }, [])
 
   return (
-    <div ref={mapContainer} className={styles.mapContainer}></div>
+    <div ref={mapContainer} className={styles.mapContainer} data-cy="map"></div>
   )
 }
