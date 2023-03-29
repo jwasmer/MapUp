@@ -40,7 +40,7 @@ export default function CreateOrganization() {
         .insert(orgUpdates)
 
       const { data: joinUpdatesData, error: joinUpdatesError } = await supabase
-        .from('join_users_organizations')
+        .from('join_profiles_organizations')
         .insert(joinUpdates)
 
       if (orgUpdatesError || joinUpdatesError) throw Error

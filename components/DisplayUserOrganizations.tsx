@@ -18,15 +18,15 @@ export default function DisplayUserOrgs() {
 
       supabase
         .channel('org_updates')
-        .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'join_users_organizations', filter: `user_id=eq.${session.user.id}`}, () => {
+        .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'join_profiles_organizations', filter: `user_id=eq.${session.user.id}`}, () => {
           getUserOrgs()
           console.log("INSERT registered by subscription")
         })
-        .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'join_users_organizations', filter: `user_id=eq.${session.user.id}`}, () => {
+        .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'join_profiles_organizations', filter: `user_id=eq.${session.user.id}`}, () => {
           getUserOrgs()
           console.log("UDPATE registered by subscription")
         })
-        .on('postgres_changes', { event: 'DELETE', schema: 'public', table: 'join_users_organizations', filter: `user_id=eq.${session.user.id}`}, () => {
+        .on('postgres_changes', { event: 'DELETE', schema: 'public', table: 'join_profiles_organizations', filter: `user_id=eq.${session.user.id}`}, () => {
           getUserOrgs()
           console.log("DELETE registered by subscription")
         })
@@ -42,7 +42,7 @@ export default function DisplayUserOrgs() {
       if (!session) throw new Error('No user')
       
       let { data, error, status } = await supabase
-        .from('join_users_organizations')
+        .from('join_profiles_organizations')
         .select()
         .eq('user_id', session.user.id)
         .select(`organization_id, user_organization_role, 
@@ -55,7 +55,7 @@ export default function DisplayUserOrgs() {
       }
 
       if (error && status !== 406) {
-        console.log("Error fetching from join_users_organizations table")
+        console.log("Error fetching from join_profiles_organizations table")
         throw Error
       }
 
