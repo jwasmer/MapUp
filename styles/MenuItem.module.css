@@ -9,6 +9,7 @@
 
 .menuItem:hover {
   background-color: var(--bg-accent);
+  cursor: pointer;
 }
 
 .menuText {

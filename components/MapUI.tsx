@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { MouseEventHandler, useState } from "react";
 import { useSupabaseClient } from "@supabase/auth-helpers-react";
 import styles from "../styles/MapUI.module.css";
 import Link from "next/link";
@@ -56,15 +56,20 @@ export default function MapUI() {
               Account
             </MenuItem>
           </Link>
-          <MenuItem iconLeft={<Icon color={"#FFFFFF"} name={"settings"} />}>
-            Organizations
-          </MenuItem>
-          <MenuItem iconLeft={<Icon color={"#FFFFFF"} name={"settings"} />}>
-            Sign Out
-          </MenuItem>
-          <MenuItem iconLeft={<Icon color={"#FFFFFF"} name={"settings"} />}>
-            Sign Out
-          </MenuItem>
+          <Link href="/organizations">
+            <MenuItem iconLeft={<Icon color={"#FFFFFF"} name={"settings"} />}>
+              Organizations
+            </MenuItem>
+          </Link>
+          <button className={styles.signOut} onClick={(event) => {
+              event.preventDefault
+              console.log('click')
+              supabase.auth.signOut()
+            }}>
+            <MenuItem iconLeft={<Icon color={"#FFFFFF"} name={"settings"}/>}>
+              Sign Out
+            </MenuItem>
+          </button>
         </Menu>
       </MapButton>
     </header>
