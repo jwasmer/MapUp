@@ -1,18 +1,16 @@
-import { useEffect } from 'react'
 import { useSessionContext, useSupabaseClient } from '@supabase/auth-helpers-react'
-import Account from '../components/Account'
+import Account from './account'
 import AuthModal from '../components/AuthModal'
 import style from "../styles/Home.module.css"
 import MapUI from '@/components/MapUI'
 import BackdropMap from '@/components/BackdropMap'
+import { Database } from '@/utils/supabase'
 
 export default function Home () {
-  const supabase = useSupabaseClient()
+  const supabase = useSupabaseClient<Database>()
   const { isLoading, session } = useSessionContext()
-  
-  useEffect(() => {
-    console.log(session)
-  }, [session])
+
+  console.log(session)
 
   return (
     <main className={style.main}>
@@ -24,7 +22,7 @@ export default function Home () {
         <MapUI />
       }
       {session && 
-        <Account session={session} />
+        <Account />
       }
     </main>
   )

@@ -15,3 +15,8 @@
   z-index: 1;
   color: var(--text-color)
 }
+
+.signOut {
+  all: unset;
+  width: 100%;
+}

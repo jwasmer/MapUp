@@ -1,0 +1,15 @@
+.deleteButton {
+  border: none;
+  background-color: var(--bg);
+  color: var(--text-color);
+  border-radius: 5px;
+}
+
+.deleteButton:hover {
+  background-color: var(--bg-accent);
+  cursor: pointer;
+}
+
+.orgsWrapper {
+  width: 480px;
+}

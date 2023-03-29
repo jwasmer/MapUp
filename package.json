@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "gentypes": "supabase gen types typescript --db-url postgresql://postgres:jjOCzNijANtBcQ33@db.lgddjyttiuonovokmhnf.supabase.co:5432/postgres"
   },
   "dependencies": {
     "@next/font": "13.1.6",
@@ -15,9 +16,10 @@
     "@supabase/auth-ui-react": "^0.2.8",
     "@supabase/supabase-js": "^2.0.0-rc.13",
     "@types/mapbox-gl": "^2.7.10",
-    "@types/node": "18.14.0",
+    "@types/node": "^18.14.0",
     "@types/react": "18.0.28",
     "@types/react-dom": "18.0.11",
+    "@types/uuid": "^9.0.1",
     "eslint": "8.34.0",
     "eslint-config-next": "13.1.6",
     "mapbox-gl": "^2.13.0",
@@ -25,10 +27,12 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-map-gl": "^7.0.21",
-    "typescript": "4.9.5"
+    "typescript": "4.9.5",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@types/react-transition-group": "^4.4.5",
+    "cypress": "^12.8.0",
     "supabase": "^1.38.7"
   }
 }
