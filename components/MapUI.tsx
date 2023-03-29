@@ -48,16 +48,16 @@ export default function MapUI() {
 
   return (
     <header className={styles.nav}>
-      <Searchbar runSearch={searchAddresses} />
-      <MapButton icon={<Icon name={"arrow_drop_down"} />}>
+      <Searchbar runSearch={searchAddresses} data-cy="mapui-searchbar" />
+      <MapButton icon={<Icon name={"arrow_drop_down"} />} data-cy="mapui-dropdown">
         <Menu>
           <Link href="/account">
-            <MenuItem iconLeft={<Icon color={"#FFFFFF"} name={"settings"} />}>
+            <MenuItem iconLeft={<Icon color={"#FFFFFF"} name={"settings"} />} data-cy="mapui-account">
               Account
             </MenuItem>
           </Link>
           <Link href="/organizations">
-            <MenuItem iconLeft={<Icon color={"#FFFFFF"} name={"settings"} />}>
+            <MenuItem iconLeft={<Icon color={"#FFFFFF"} name={"settings"} />} data-cy="mapui-organizations">
               Organizations
             </MenuItem>
           </Link>
@@ -66,7 +66,7 @@ export default function MapUI() {
               console.log('click')
               supabase.auth.signOut()
             }}>
-            <MenuItem iconLeft={<Icon color={"#FFFFFF"} name={"settings"}/>}>
+            <MenuItem iconLeft={<Icon color={"#FFFFFF"} name={"settings"}/>} data-cy="mapui-signout">
               Sign Out
             </MenuItem>
           </button>
