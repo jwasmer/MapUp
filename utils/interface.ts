@@ -34,7 +34,7 @@ export interface OrgData {
   organizations: {
     organization_name: string;
   };
-  user_organization_role: string;
+  profile_organization_role: string;
 }
 
 export interface SearchResult {
