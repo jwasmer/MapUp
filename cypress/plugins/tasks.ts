@@ -16,8 +16,8 @@ export async function getUserSession({
 
   if (!sessions['user']) {
     const { data } = await supabase.auth.signInWithPassword({
-      email: `${user}@example.com`,
-      password: `${user}-password`,
+      email: env.testUser,
+      password: env.testPass,
     });
 
     sessions['user'] = data.session;
