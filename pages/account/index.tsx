@@ -193,10 +193,6 @@ export default function Account() {
               {loading ? "Loading ..." : "Update"}
             </button>
           </div>
-
-          <div>
-            <button onClick={() => supabase.auth.signOut()}>Sign Out</button>
-          </div>
         </div>
       )}
     </>
