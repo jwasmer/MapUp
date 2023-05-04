@@ -109,93 +109,92 @@ export default function Account() {
     <>
       {session && (
         <div className={styles.frame}>
-          <div>
-            <label htmlFor="email">Email</label>
-            {session && (
-              <input
-                id="email"
-                type="text"
-                value={session.user.email}
-                disabled
-              />
-            )}
-          </div>
-          <div>
+          <h2 className={styles.account}> Account </h2>
+          <div className={styles.formWrapper}>
+            <div className={styles.inputsWrapper}>
+            <label className={styles.label} htmlFor="first-name"> First name </label>
             <input
+              className={styles.nameInput}
               id="first-name"
               type="text"
               placeholder="First name"
               value={first_name || ""}
               onChange={(e) => setFirstName(e.target.value)}
             />
-          </div>
-          <div>
+            <label className={styles.label} htmlFor="last-name"> Last name </label>
             <input
+              className={styles.nameInput}
               id="last-name"
               type="text"
               placeholder="Last name"
               value={last_name || ""}
               onChange={(e) => setLastName(e.target.value)}
             />
-          </div>
-          <div>
+            <div className={styles.divider} />
+            <label className={styles.label} htmlFor="street-address"> Address </label>
             <input
+              className={styles.addressInput}
               id="street-address"
               type="text"
               placeholder="Address"
               value={street_address || ""}
               onChange={(e) => setStreetAddress(e.target.value)}
             />
-          </div>
-          <div>
+            <label className={styles.label} htmlFor="city"> City </label>
             <input
+              className={styles.cityInput}
               id="city"
               type="text"
               placeholder="City"
               value={city || ""}
               onChange={(e) => setCity(e.target.value)}
             />
-          </div>
-          <div>
-            <input
-              id="state"
-              type="text"
-              placeholder="State"
-              value={home_state || ""}
-              onChange={(e) => setHomeState(e.target.value)}
-            />
-          </div>
-          <div>
-            <input
-              id="zipcode"
-              type="text"
-              placeholder="Zipcode"
-              value={zipcode || ""}
-              onChange={(e) => setZipcode(e.target.value)}
-            />
-          </div>
+            <div className={styles.stateZipInputWrapper}>
+              <div className={styles.inputColumn}>
+                <label className={styles.label} htmlFor="state"> State </label>
+                <input
+                  className={styles.stateZipInput}
+                  id="state"
+                  type="text"
+                  placeholder="State"
+                  value={home_state || ""}
+                  onChange={(e) => setHomeState(e.target.value)}
+                />
+              </div>
+              <div className={styles.inputColumn}>
+                <label className={styles.label} htmlFor="zipcode"> Zipcode </label>
+                <input
+                  className={styles.stateZipInput}
+                  id="zipcode"
+                  type="text"
+                  placeholder="Zipcode"
+                  value={zipcode || ""}
+                  onChange={(e) => setZipcode(e.target.value)}
+                />
+              </div>
+            </div>
+            <div>
+              <button
+                onClick={() =>
+                  updateProfile({
+                    email,
+                    first_name,
+                    last_name,
+                    street_address,
+                    city,
+                    home_state,
+                    zipcode,
+                  })
+                }
+                disabled={loading}
+              >
+                {loading ? "Loading ..." : "Update"}
+              </button>
+            </div>
+            </div>
+            <div className={styles.helperText}>
 
-          <div>
-            <button
-              onClick={() =>
-                updateProfile({
-                  email,
-                  first_name,
-                  last_name,
-                  street_address,
-                  city,
-                  home_state,
-                  zipcode,
-                })
-              }
-              disabled={loading}
-            >
-              {loading ? "Loading ..." : "Update"}
-            </button>
-          </div>
-
-          <div>
-            <button onClick={() => supabase.auth.signOut()}>Sign Out</button>
+            </div>
           </div>
         </div>
       )}

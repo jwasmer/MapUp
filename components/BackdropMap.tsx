@@ -5,6 +5,8 @@ import styles from '../styles/BackdropMap.module.css'
 mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN ?? ''
 
 export default function BackdropMap() {
+  const [userIso, setUserIso] = useState(null)
+
   const mapContainer = useRef(null)
     const map = useRef<mapboxgl.Map | null>(null)
     const [lng, setLng] = useState(-70.9)
@@ -24,9 +26,10 @@ export default function BackdropMap() {
       setLat(Number(map.current?.getCenter().lat.toFixed(4)));
       setZoom(Number(map.current?.getZoom().toFixed(2)));
     });
+    
   }, [])
 
   return (
-    <div ref={mapContainer} className={styles.mapContainer}></div>
+    <div ref={mapContainer} className={styles.mapContainer} data-cy="map"></div>
   )
 }

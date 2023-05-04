@@ -1,0 +1,78 @@
+.frame {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.formWrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.inputsWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 600px;
+  height: 100%;
+}
+
+.helperText {
+  background-color: var(--bg-accent);
+  height: 85%;
+  width: 70%;
+  margin-top: 1em;
+  border-radius: 10px;
+}
+
+.nameInputs {
+  display: flex;
+  flex-direction: row;
+}
+
+.nameInput {
+  width: 75%;
+}
+
+.label {
+  margin-top: 12px;
+  margin-bottom: 8px;
+}
+
+.addressInput {
+  width: 75%;
+}
+
+.addressLabel {
+  margin-top: 24px;
+}
+
+.cityInput {
+  width: 75%;
+}
+
+.stateZipInput {
+  width: 80%;
+}
+
+.inputColumn {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+.stateZipInputWrapper {
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+}
+
+.divider {
+  margin: 6px;
+}
+
+.account {
+  margin: 24px;
+}

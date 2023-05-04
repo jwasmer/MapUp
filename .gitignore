@@ -8,6 +8,8 @@
 # testing
 /coverage
 cypress.env.json
+cypress/fixtures/session.json
+cypress/fixtures/user.json
 
 # next.js
 /.next/
