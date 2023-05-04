@@ -2,7 +2,7 @@ import { SupabaseClient } from '@supabase/auth-helpers-react'
 import { Auth, ThemeSupa } from '@supabase/auth-ui-react'
 import styles from "../styles/AuthModal.module.css"
 
-export default function Account({ supabase }: { supabase: SupabaseClient }) {
+export default function AuthModal({ supabase }: { supabase: SupabaseClient }) {
   
   return (
     <>

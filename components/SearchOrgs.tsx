@@ -56,7 +56,7 @@ export default function SearchOrgs() {
 
   return (
     <div>
-      <h3>Join new organizations</h3>
+      <h3>Search for new organizations</h3>
       <Searchbar runSearch={searchOrgNames} />
       {results && searchResultCards(results)}
     </div>
