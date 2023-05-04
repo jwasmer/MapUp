@@ -2,8 +2,6 @@ const baseUrl = Cypress.config().baseUrl
 
 describe('Map UI', () => {
   beforeEach(() => {
-    cy.fixture('user').as('user')
-    cy.login('@user')
     cy.visit('/')
   })
   it('Should display a map as the page background', () => {
