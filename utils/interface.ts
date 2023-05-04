@@ -1,4 +1,5 @@
 import { PropsWithChildren } from "react"
+import { Session } from "@supabase/supabase-js"
 
 export interface IconProps {
   color?: string
@@ -44,4 +45,8 @@ export interface SearchResult {
 
 export interface SearchbarProps {
   runSearch: Function
+}
+
+export interface TestSessions {
+  user?: Session
 }
