@@ -12,6 +12,7 @@ export default function Searchbar(props: SearchbarProps) {
       }}
     >
       <input
+        data-cy="searchbar"
         className={styles.search}
         type="text"
         value={searchTerm}
