@@ -1,38 +1,31 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# MapUp
 
-## Getting Started
+MapUp (in development) is a data visualization tool allowing organizations to see opportunities for member meetups.
 
-First, run the development server:
+I developed the concept for this project while enrolled at Turing, a tech bootcamp, after realizing that there were no good tools on the market that allowed students to visualize the almuni network of their alma mater. Turing has an alumni network based primarily in Denver, CO, so I was left to fend for myself in Burlington, VT--I didn't identify local alumni until the program had already concluded, and it's difficult to determine if there are other local alumni I can connect with that I'm still unaware of.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+MapUp is a tool that solves this problem by registering members to their appropriate organizations and generating an [isochrone](https://en.wikipedia.org/wiki/Isochrone_map#:~:text=An%20isochrone%20(iso%20%3D%20equal%2C,areas%20of%20equal%20travel%20time.) polygon representing the geographic area they're willing to travel within to attend a meetup. Other users registered to that organization (either organization administrators or members) can then use this information to identify areas that are currently underserved by networking events, or, in my own case, can connect with their own local network.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Features
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+### Map
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+The most straightforward feature of the project, the map will display user isochrone polygons for all other users within a given organization. As an alumni of the Turing School of Software and Design, for example, this would allow me to see isochrones for all other members of Turing's organization. I can then use this data and the tools within the app to plan events based on member hotspots.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+### Organizations (WIP)
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Organizations are the buckets that sort user data into meaningful groups. Once a user joins an organization they'll be given access to that organization's user map. This map will contain user isochrones (to maintain user privacy, these isochrones will be sanitized of their specific user data). Users may then plan events based on the overlap of these isochrones--the more isochrones that overlap, the more users there are willing to travel to that location for an event.
 
-## Learn More
+Organizations will allow administrators to be assigned to moderate user membership, and these administrators will be given tools to add/remove/invite new members. Looking beyond the MVP, a more complete data visualization toolkit would provide value to organizations seeking to track member engagement in different regions, and access to more advanced organization tools would likely form the basis of any paid subscription model.
 
-To learn more about Next.js, take a look at the following resources:
+### Events (WIP)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Events are the desired end-state of using this product. While event planning tools exceed the scope of this project's MVP, they're next on-deck for the project's roadmap. Ultimately, the user experience should allow a user to join an organization, view a membership map, select a location on that map, create an event, and invite members whose isochrones overlap that event. It's important to reiterate that the isochrones will not give access to specific user data beyond the isochrone polygon itself--that is, with the exeption of organization administrators, clicking on an isochrone will not reveal the member assigned to that isochrone nor provide any personal details about the user that isochrone represents. When planning an event, a user would write an email or in-app notification which would be sent to the still-anonymous members, who could then RSVP in response. An event planning interface would allow the event planner to track these RSVPs and update event information (dates, locations, fees, activities, etc).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Technologies
 
-## Deploy on Vercel
+MapUp is built in Next.js and TypeScript with a Supabase backend and e2e tests written in Cypress. A goal of this project was to minimize the use of third party libraries when appropriate--I considered using UI libraries but decided to keep the project as lean as possible.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Installation
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+The app is currently a work in progress, deployment coming as soon as the MVP is complete!
