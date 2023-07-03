@@ -6,6 +6,6 @@ describe('User Auth', () => {
   it('Should not display a user auth modal if the user has been authenticated', () => {
     cy.login()
     cy.visit('/')
-    cy.get('[data-cy="mapui-searchbar"]').should('exist')
+    cy.get('[data-cy="searchbar"]').should('exist')
   })
 })
