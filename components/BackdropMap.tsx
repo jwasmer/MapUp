@@ -27,9 +27,25 @@ export default function BackdropMap() {
       setZoom(Number(map.current?.getZoom().toFixed(2)));
     });
     
+    // map.current.on('click', (e) => {
+    //   console.log(e.lngLat)
+    // })
+
+    
   }, [])
 
   return (
     <div ref={mapContainer} className={styles.mapContainer} data-cy="map"></div>
   )
 }
+
+// When a user logs in, their isochrone centerpoint should be fetched. The map should then center to their isochrone and default to displaying all local events.
+
+// When a user clicks on the map it should create an events card. The events card will display information on what was clicked on, how many attendees are within range, and the average travel time per attendee (?
+
+// Users should have a toolkit to sort/filter their map view.
+//   - Events only
+//   - User isochrones within their organization
+//   - User isochrones belonging to a suborg (Physics majors at UVM, medic platoon in 3-172, etc)
+
+// The BackdropMap component should contain the map container.
