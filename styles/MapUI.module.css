@@ -16,6 +16,24 @@
   color: var(--text-color)
 }
 
+.sideBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 480px;
+  background-color: white;
+}
+
+.sideBarNav {
+  position: relative;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  border-right: 1px solid black;
+  width: 72px;
+}
+
 .signOut {
   all: unset;
   width: 100%;

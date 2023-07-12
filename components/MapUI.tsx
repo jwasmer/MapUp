@@ -16,6 +16,10 @@ export default function MapUI() {
   const [results, setResults] = useState<Result[]>([]);
   const [loading, setLoading] = useState(false);
 
+  // searchAddresses should find all home addresses within an organization.
+  // 1. Identify the user's organization
+  // 2. Return a list of all addresses within that organization
+
   async function searchAddresses(event: HTMLFormElement, searchTerm: string) {
     event?.preventDefault();
     try {
@@ -47,31 +51,38 @@ export default function MapUI() {
   }
 
   return (
-    <header className={styles.nav}>
-      <Searchbar runSearch={searchAddresses} data-cy="mapui-searchbar" />
-      <MapButton icon={<Icon name={"arrow_drop_down"} />} data-cy="mapui-dropdown">
-        <Menu>
-          <Link href="/account">
-            <MenuItem iconLeft={<Icon color={"#FFFFFF"} name={"settings"} />} data-cy="mapui-account">
-              Account
-            </MenuItem>
-          </Link>
-          <Link href="/organizations">
-            <MenuItem iconLeft={<Icon color={"#FFFFFF"} name={"settings"} />} data-cy="mapui-organizations">
-              Organizations
-            </MenuItem>
-          </Link>
-          <button className={styles.signOut} onClick={(event) => {
-              event.preventDefault
-              console.log('click')
-              supabase.auth.signOut()
-            }}>
-            <MenuItem iconLeft={<Icon color={"#FFFFFF"} name={"settings"}/>} data-cy="mapui-signout">
-              Sign Out
-            </MenuItem>
-          </button>
-        </Menu>
-      </MapButton>
-    </header>
+    <>
+      <header className={styles.nav}>
+        {/* <Searchbar runSearch={searchAddresses} data-cy="mapui-searchbar" /> */}
+        <MapButton icon={<Icon name={"arrow_drop_down"} />} data-cy="mapui-dropdown">
+          <Menu>
+            <Link href="/account">
+              <MenuItem iconLeft={<Icon color={"#FFFFFF"} name={"account_circle"} />} data-cy="mapui-account">
+                Account
+              </MenuItem>
+            </Link>
+            <Link href="/organizations">
+              <MenuItem iconLeft={<Icon color={"#FFFFFF"} name={"manage_accounts"} />} data-cy="mapui-organizations">
+                Organizations
+              </MenuItem>
+            </Link>
+            <button className={styles.signOut} onClick={(event) => {
+                event.preventDefault
+                console.log('click')
+                supabase.auth.signOut()
+              }}>
+              <MenuItem iconLeft={<Icon color={"#FFFFFF"} name={"logout"}/>} data-cy="mapui-signout">
+                Sign Out
+              </MenuItem>
+            </button>
+          </Menu>
+        </MapButton>
+        <MapButton icon={<Icon name={"manage_accounts"} />} data-cy="mapui-dropdown" />
+      </header>
+      <div className={styles.sideBar}>
+        <div className={styles.sideBarNav}>
+        </div>
+      </div>
+    </>
   );
 }

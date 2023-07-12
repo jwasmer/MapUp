@@ -3,7 +3,7 @@ import { Session } from "@supabase/supabase-js"
 
 export interface IconProps {
   color?: string
-  name: "arrow_drop_down" | "settings" | "navigate_next" | "add" | "delete"
+  name: "arrow_drop_down" | "settings" | "navigate_next" | "add" | "delete" | "account_circle" | "manage_accounts" | "logout"
 }
 
 export type MapButtonProps = PropsWithChildren<{
