@@ -1,3 +1,37 @@
+.sideBarViewBtn {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  height: 48px;
+  width: 23px;
+  left: 480px;
+  top: calc(50% - 24px);
+  background-color: white;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  box-shadow: 0 1px 2px rgba(60,64,67,0.3), 0 2px 6px 2px rgba(60,64,67,0.15);
+  transition-duration: 175ms;
+}
+
+.sideBarViewBtn:hover {
+  background-color: var(--text-color);
+}
+
+.sideBarViewBtn:active {
+  background-color: var(--bg);
+}
+
+.displayToggle {
+  display: none
+}
+
 .form {
   width: 100%;
   display: flex;
@@ -17,21 +51,48 @@
 }
 
 .sideBar {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
-  height: 100vh;
-  width: 480px;
+  height: 100%;
+  width: auto;
   background-color: white;
+  box-shadow: 0 1px 2px rgba(60,64,67,0.3),0 2px 6px 2px rgba(60,64,67,0.15);
+  z-index: 1;
 }
 
 .sideBarNav {
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: absolute;
   top: 0;
   left: 0;
   bottom: 0;
-  border-right: 1px solid black;
   width: 72px;
+  z-index: 2;
+  background-color: white;
+  box-shadow: 0 1px 2px rgba(60,64,67,0.3),0 2px 6px 2px rgba(60,64,67,0.15);
+}
+
+.detailsFrame {
+  position: absolute;
+  height: 100%;
+  top: 0;
+  left: 72px;
+  bottom: 0;
+  z-index: 1;
+  background-color: rgb(255, 0, 0, 0.5);
+  width: 408px;
+  transition: all 175ms ease-out;
+}
+
+.expanded {
+  transform: translateX(0px);
+}
+
+.collapsed {
+  transform: translateX(-408px);
 }
 
 .signOut {

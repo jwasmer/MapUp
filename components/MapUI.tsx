@@ -13,6 +13,7 @@ type Result = Pick<OrganizationRow, "organization_id" | "organization_name">;
 
 export default function MapUI() {
   const supabase = useSupabaseClient<Database>();
+  const [detailsFrameToggle, setDetailsFrameToggle] = useState(false)
   const [results, setResults] = useState<Result[]>([]);
   const [loading, setLoading] = useState(false);
 
@@ -50,6 +51,10 @@ export default function MapUI() {
     }
   }
 
+  function toggleDetailsFrame() {
+    setDetailsFrameToggle(toggleState => !toggleState)
+  }
+
   return (
     <>
       <header className={styles.nav}>
@@ -81,8 +86,17 @@ export default function MapUI() {
       </header>
       <div className={styles.sideBar}>
         <div className={styles.sideBarNav}>
+          <button></button>
+          <Icon color={"var(--bg-accent)"} name={"arrow_left"} />
+          <Icon color={"var(--bg-accent)"} name={"arrow_left"} />
+          <Icon color={"var(--bg-accent)"} name={"arrow_left"} />
+        </div>
+        <div className={`${styles.detailsFrame} ${detailsFrameToggle ? styles.expanded : styles.collapsed}`}>
         </div>
       </div>
+      <button className={`${styles.sideBarViewBtn} ${detailsFrameToggle ? styles.expanded : styles.collapsed}`} onClick={toggleDetailsFrame}>
+        {detailsFrameToggle ? <Icon color={"var(--bg-accent)"} name={"arrow_left"} /> : <Icon color={"var(--bg-accent)"} name={"arrow_right"} />}
+      </button>
     </>
   );
 }
