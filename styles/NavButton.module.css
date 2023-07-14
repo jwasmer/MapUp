@@ -1,0 +1,29 @@
+.buttonLabel {
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.navButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  width: 48px;
+  margin: 12px;
+  padding: 0px;
+  border-radius: 8px;
+  background: none;
+  border: none;
+  transition-duration: 175ms;
+}
+
+.navButton:hover {
+  background-color: var(--bg-accent);
+}
+
+.navButton:active {
+  background-color: var(--bg);
+}
